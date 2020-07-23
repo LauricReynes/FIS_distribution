@@ -36,11 +36,11 @@ FIS$POP.1 <- cut(FIS$POP1, c(-1.1,-0.8001,-0.5001,-0.3001,-0.1001,-0.0001,0.0999
 
 # 4. Compute the abundance of each class and save values in the dataframe 'POP1'
 
-A <-length(which(FIS$POP1.1 == -1));  B <-length(which(FIS$POP1.1 == -0.8))  
-C <-length(which(FIS$POP1.1 == -0.5)); D <-length(which(FIS$POP1.1 == -0.3))  
-E <-length(which(FIS$POP1.1 == -0.1)); F <-length(which(FIS$POP1.1 == 0.1))  
-G <-length(which(FIS$POP1.1 == 0.3)); H <-length(which(FIS$POP1.1 == 0.5))  
-I <-length(which(FIS$POP1.1 == 0.8)); J <-length(which(FIS$POP1.1 == 1))  
+A <-length(which(FIS$POP.1 == -1)); B <-length(which(FIS$POP.1 == -0.8))  
+C <-length(which(FIS$POP.1 == -0.5)); D <-length(which(FIS$POP.1 == -0.3))  
+E <-length(which(FIS$POP.1 == -0.1)); F <-length(which(FIS$POP.1 == 0.1))  
+G <-length(which(FIS$POP.1 == 0.3)); H <-length(which(FIS$POP.1 == 0.5))  
+I <-length(which(FIS$POP.1 == 0.8)); J <-length(which(FIS$POP.1 == 1))  
 
 cut <- c("[-1.0,-0.8[","[-0.8,-0.5[","[-0.5,-0.3[","[-0.3,-0.1[","[-0.1,0.0[","[0.0,0.1[","[0.1,0.3[","[0.3,0.5[","[0.5,0.8[","[0.8,1.0]")
 values <- c(A,B,C,D,E,F,G,H,I,J)  
@@ -49,7 +49,7 @@ POP1 <- data.frame(cut,values)
 ```
 #### 5. Plot each class as a histogram and save in image format (300 dpi)
 ```
-ggplot(POP1, aes(x = cut, y =(values/length(FIS$POP1.1[!is.na(FIS$POP1.1)])))) +
+ggplot(POP1, aes(x = cut, y =(values/length(FIS$POP.1[!is.na(FIS$POP.1)])))) +
   geom_bar(stat="identity",color="black", fill="firebrick1",alpha =0.6)+
   scale_x_discrete(limits=c("[-1.0,-0.8[","[-0.8,-0.5[","[-0.5,-0.3[","[-0.3,-0.1[","[-0.1,0.0[","[0.0,0.1[","[0.1,0.3[","[0.3,0.5[","[0.5,0.8[","[0.8,1.0]"),name = 'FIS')+
   scale_y_continuous(name = 'Frequency of loci',limits= c(0,0.60))+
